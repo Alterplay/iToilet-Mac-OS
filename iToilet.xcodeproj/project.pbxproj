@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E5B84AC18AFA21500F3CC65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5B84AB18AFA21500F3CC65 /* Cocoa.framework */; };
+		0E5B84B618AFA21500F3CC65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84B418AFA21500F3CC65 /* InfoPlist.strings */; };
+		0E5B84B818AFA21500F3CC65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B84B718AFA21500F3CC65 /* main.m */; };
+		0E5B84BC18AFA21500F3CC65 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84BA18AFA21500F3CC65 /* Credits.rtf */; };
+		0E5B84BF18AFA21500F3CC65 /* APAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B84BE18AFA21500F3CC65 /* APAppDelegate.m */; };
+		0E5B84C218AFA21500F3CC65 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84C018AFA21500F3CC65 /* MainMenu.xib */; };
+		0E5B84C418AFA21500F3CC65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84C318AFA21500F3CC65 /* Images.xcassets */; };
+		0E5B84CB18AFA21500F3CC65 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5B84CA18AFA21500F3CC65 /* XCTest.framework */; };
+		0E5B84CC18AFA21500F3CC65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5B84AB18AFA21500F3CC65 /* Cocoa.framework */; };
+		0E5B84D418AFA21500F3CC65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84D218AFA21500F3CC65 /* InfoPlist.strings */; };
+		0E5B84D618AFA21500F3CC65 /* iToiletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B84D518AFA21500F3CC65 /* iToiletTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E5B84CD18AFA21500F3CC65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5B84A018AFA21500F3CC65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5B84A718AFA21500F3CC65;
+			remoteInfo = iToilet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0E5B84A818AFA21500F3CC65 /* iToilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iToilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5B84AB18AFA21500F3CC65 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0E5B84AE18AFA21500F3CC65 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0E5B84AF18AFA21500F3CC65 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0E5B84B018AFA21500F3CC65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0E5B84B318AFA21500F3CC65 /* iToilet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iToilet-Info.plist"; sourceTree = "<group>"; };
+		0E5B84B518AFA21500F3CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E5B84B718AFA21500F3CC65 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0E5B84B918AFA21500F3CC65 /* iToilet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iToilet-Prefix.pch"; sourceTree = "<group>"; };
+		0E5B84BB18AFA21500F3CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		0E5B84BD18AFA21500F3CC65 /* APAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APAppDelegate.h; sourceTree = "<group>"; };
+		0E5B84BE18AFA21500F3CC65 /* APAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APAppDelegate.m; sourceTree = "<group>"; };
+		0E5B84C118AFA21500F3CC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		0E5B84C318AFA21500F3CC65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0E5B84C918AFA21500F3CC65 /* iToiletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iToiletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5B84CA18AFA21500F3CC65 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0E5B84D118AFA21500F3CC65 /* iToiletTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iToiletTests-Info.plist"; sourceTree = "<group>"; };
+		0E5B84D318AFA21500F3CC65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E5B84D518AFA21500F3CC65 /* iToiletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iToiletTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E5B84A518AFA21500F3CC65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84AC18AFA21500F3CC65 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E5B84C618AFA21500F3CC65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84CC18AFA21500F3CC65 /* Cocoa.framework in Frameworks */,
+				0E5B84CB18AFA21500F3CC65 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E5B849F18AFA21500F3CC65 = {
+			isa = PBXGroup;
+			children = (
+				0E5B84B118AFA21500F3CC65 /* iToilet */,
+				0E5B84CF18AFA21500F3CC65 /* iToiletTests */,
+				0E5B84AA18AFA21500F3CC65 /* Frameworks */,
+				0E5B84A918AFA21500F3CC65 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E5B84A918AFA21500F3CC65 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84A818AFA21500F3CC65 /* iToilet.app */,
+				0E5B84C918AFA21500F3CC65 /* iToiletTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E5B84AA18AFA21500F3CC65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84AB18AFA21500F3CC65 /* Cocoa.framework */,
+				0E5B84CA18AFA21500F3CC65 /* XCTest.framework */,
+				0E5B84AD18AFA21500F3CC65 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E5B84AD18AFA21500F3CC65 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84AE18AFA21500F3CC65 /* AppKit.framework */,
+				0E5B84AF18AFA21500F3CC65 /* CoreData.framework */,
+				0E5B84B018AFA21500F3CC65 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0E5B84B118AFA21500F3CC65 /* iToilet */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84BD18AFA21500F3CC65 /* APAppDelegate.h */,
+				0E5B84BE18AFA21500F3CC65 /* APAppDelegate.m */,
+				0E5B84C018AFA21500F3CC65 /* MainMenu.xib */,
+				0E5B84C318AFA21500F3CC65 /* Images.xcassets */,
+				0E5B84B218AFA21500F3CC65 /* Supporting Files */,
+			);
+			path = iToilet;
+			sourceTree = "<group>";
+		};
+		0E5B84B218AFA21500F3CC65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84B318AFA21500F3CC65 /* iToilet-Info.plist */,
+				0E5B84B418AFA21500F3CC65 /* InfoPlist.strings */,
+				0E5B84B718AFA21500F3CC65 /* main.m */,
+				0E5B84B918AFA21500F3CC65 /* iToilet-Prefix.pch */,
+				0E5B84BA18AFA21500F3CC65 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E5B84CF18AFA21500F3CC65 /* iToiletTests */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84D518AFA21500F3CC65 /* iToiletTests.m */,
+				0E5B84D018AFA21500F3CC65 /* Supporting Files */,
+			);
+			path = iToiletTests;
+			sourceTree = "<group>";
+		};
+		0E5B84D018AFA21500F3CC65 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84D118AFA21500F3CC65 /* iToiletTests-Info.plist */,
+				0E5B84D218AFA21500F3CC65 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E5B84A718AFA21500F3CC65 /* iToilet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E5B84D918AFA21500F3CC65 /* Build configuration list for PBXNativeTarget "iToilet" */;
+			buildPhases = (
+				0E5B84A418AFA21500F3CC65 /* Sources */,
+				0E5B84A518AFA21500F3CC65 /* Frameworks */,
+				0E5B84A618AFA21500F3CC65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iToilet;
+			productName = iToilet;
+			productReference = 0E5B84A818AFA21500F3CC65 /* iToilet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0E5B84C818AFA21500F3CC65 /* iToiletTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E5B84DC18AFA21500F3CC65 /* Build configuration list for PBXNativeTarget "iToiletTests" */;
+			buildPhases = (
+				0E5B84C518AFA21500F3CC65 /* Sources */,
+				0E5B84C618AFA21500F3CC65 /* Frameworks */,
+				0E5B84C718AFA21500F3CC65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E5B84CE18AFA21500F3CC65 /* PBXTargetDependency */,
+			);
+			name = iToiletTests;
+			productName = iToiletTests;
+			productReference = 0E5B84C918AFA21500F3CC65 /* iToiletTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E5B84A018AFA21500F3CC65 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AP;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Alterplay;
+				TargetAttributes = {
+					0E5B84C818AFA21500F3CC65 = {
+						TestTargetID = 0E5B84A718AFA21500F3CC65;
+					};
+				};
+			};
+			buildConfigurationList = 0E5B84A318AFA21500F3CC65 /* Build configuration list for PBXProject "iToilet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0E5B849F18AFA21500F3CC65;
+			productRefGroup = 0E5B84A918AFA21500F3CC65 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E5B84A718AFA21500F3CC65 /* iToilet */,
+				0E5B84C818AFA21500F3CC65 /* iToiletTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E5B84A618AFA21500F3CC65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84B618AFA21500F3CC65 /* InfoPlist.strings in Resources */,
+				0E5B84C418AFA21500F3CC65 /* Images.xcassets in Resources */,
+				0E5B84BC18AFA21500F3CC65 /* Credits.rtf in Resources */,
+				0E5B84C218AFA21500F3CC65 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E5B84C718AFA21500F3CC65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84D418AFA21500F3CC65 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E5B84A418AFA21500F3CC65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84B818AFA21500F3CC65 /* main.m in Sources */,
+				0E5B84BF18AFA21500F3CC65 /* APAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E5B84C518AFA21500F3CC65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5B84D618AFA21500F3CC65 /* iToiletTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5B84CE18AFA21500F3CC65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E5B84A718AFA21500F3CC65 /* iToilet */;
+			targetProxy = 0E5B84CD18AFA21500F3CC65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0E5B84B418AFA21500F3CC65 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E5B84B518AFA21500F3CC65 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0E5B84BA18AFA21500F3CC65 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E5B84BB18AFA21500F3CC65 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		0E5B84C018AFA21500F3CC65 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E5B84C118AFA21500F3CC65 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		0E5B84D218AFA21500F3CC65 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E5B84D318AFA21500F3CC65 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E5B84D718AFA21500F3CC65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0E5B84D818AFA21500F3CC65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0E5B84DA18AFA21500F3CC65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iToilet/iToilet-Prefix.pch";
+				INFOPLIST_FILE = "iToilet/iToilet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0E5B84DB18AFA21500F3CC65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iToilet/iToilet-Prefix.pch";
+				INFOPLIST_FILE = "iToilet/iToilet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0E5B84DD18AFA21500F3CC65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iToilet.app/Contents/MacOS/iToilet";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iToilet/iToilet-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iToiletTests/iToiletTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0E5B84DE18AFA21500F3CC65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iToilet.app/Contents/MacOS/iToilet";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iToilet/iToilet-Prefix.pch";
+				INFOPLIST_FILE = "iToiletTests/iToiletTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E5B84A318AFA21500F3CC65 /* Build configuration list for PBXProject "iToilet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E5B84D718AFA21500F3CC65 /* Debug */,
+				0E5B84D818AFA21500F3CC65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E5B84D918AFA21500F3CC65 /* Build configuration list for PBXNativeTarget "iToilet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E5B84DA18AFA21500F3CC65 /* Debug */,
+				0E5B84DB18AFA21500F3CC65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0E5B84DC18AFA21500F3CC65 /* Build configuration list for PBXNativeTarget "iToiletTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E5B84DD18AFA21500F3CC65 /* Debug */,
+				0E5B84DE18AFA21500F3CC65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E5B84A018AFA21500F3CC65 /* Project object */;
+}
