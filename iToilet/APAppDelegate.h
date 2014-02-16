@@ -8,8 +8,34 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface APAppDelegate : NSObject <NSApplicationDelegate>
+#define kRequestTimeout     3.0
+#define kToiletURLString    @"http://test.mockup.io:88/"
+#define kMockedResponse     @"{\"light_value\":\"4095\",\"light_status\":null}"
 
-@property (assign) IBOutlet NSWindow *window;
+typedef NS_ENUM(NSInteger, APToiletStatus) {
+    APToiletStatusFree = 0,
+    APToiletStatusBusy,
+    APToiletStatusUndefined
+};
 
+@interface APAppDelegate : NSObject <NSApplicationDelegate> {
+    
+}
+
+/* State */
+@property (assign, nonatomic) APToiletStatus currentStatus;
+@property (strong, nonatomic) NSTimer *updateTimer;
+
+/* UI */
+@property (weak) IBOutlet NSMenu *theMenu;
+@property (strong, nonatomic) NSStatusItem *theItem;
+
+- (void)activateStatusMenu;
+- (void)setupTimer;
+
+- (void)updateStatus;
+- (void)setStatus:(APToiletStatus)newStatus;
+
+- (NSData *)toiletResponse;
+- (APToiletStatus)statusFromResponse:(NSData *)responseData;
 @end

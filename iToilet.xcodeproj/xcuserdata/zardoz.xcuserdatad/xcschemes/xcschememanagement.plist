@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>iToilet (Release).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>iToilet.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>0E5B84C818AFA21500F3CC65</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0E5B84DF18AFB49800F3CC65</key>
 		<dict>
 			<key>primary</key>
 			<true/>
