@@ -12,8 +12,20 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
+        <viewController id="U6E-A8-oWe" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="9LP-ic-HYN" id="zgU-N8-Uow"/>
+            </connections>
+        </viewController>
+        <popover id="kgH-iA-Tef">
+            <connections>
+                <outlet property="contentViewController" destination="U6E-A8-oWe" id="dsG-ch-iaT"/>
+            </connections>
+        </popover>
         <customObject id="494" customClass="APAppDelegate">
             <connections>
+                <outlet property="notificationsSwitch" destination="7rB-BY-GlJ" id="do7-s0-hqD"/>
+                <outlet property="popover" destination="kgH-iA-Tef" id="5ph-Cm-FF6"/>
                 <outlet property="theMenu" destination="8eC-nU-BhO" id="aKs-pn-ePG"/>
             </connections>
         </customObject>
@@ -28,5 +40,47 @@
                 </menuItem>
             </items>
         </menu>
+        <customView id="9LP-ic-HYN">
+            <rect key="frame" x="0.0" y="0.0" width="124" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XQZ-cd-HBH">
+                    <rect key="frame" x="16" y="48" width="93" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="WvG-w6-vyE"/>
+                        <constraint firstAttribute="width" constant="81" id="fg7-gT-qkc"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Закрыть" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WgS-qb-wMs">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="terminate:" target="-3" id="YUQ-4E-z6y"/>
+                    </connections>
+                </button>
+                <button appearanceType="lightContent" translatesAutoresizingMaskIntoConstraints="NO" id="7rB-BY-GlJ">
+                    <rect key="frame" x="10" y="11" width="104" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="2TV-TD-WJQ"/>
+                        <constraint firstAttribute="height" constant="22" id="qu7-1w-UMh"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Оповещения" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rPU-iL-sz8">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleNotifications:" target="494" id="e0M-B2-ZrY"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XQZ-cd-HBH" firstAttribute="top" secondItem="9LP-ic-HYN" secondAttribute="top" constant="20" id="BiY-Jv-DVd"/>
+                <constraint firstAttribute="centerX" secondItem="XQZ-cd-HBH" secondAttribute="centerX" id="Jcn-u0-aAy"/>
+                <constraint firstAttribute="centerX" secondItem="7rB-BY-GlJ" secondAttribute="centerX" id="NYz-vP-wnN"/>
+                <constraint firstItem="7rB-BY-GlJ" firstAttribute="top" secondItem="XQZ-cd-HBH" secondAttribute="bottom" constant="20" id="aDj-n9-fcy"/>
+            </constraints>
+        </customView>
     </objects>
 </document>

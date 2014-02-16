@@ -12,10 +12,22 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+#ifdef DEBUG
+    [[ZZLogger defaultLogger] setCurrentLogLevel:(LL_NETWORK | LL_UI)];
+#endif
+    
+    self.backend = [APTBackend newBackend];
+    self.notificationController = [APTNotificationController newController];
+    
     [self activateStatusMenu];
     [self setCurrentStatus:APToiletStatusUndefined];
     
     [self setupTimer];
+}
+
+- (void)applicationDidResignActive:(NSNotification *)notification
+{
+    [self hidePopover];
 }
 
 #pragma mark - Setup
@@ -24,7 +36,11 @@
 {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
     self.theItem = [bar statusItemWithLength:NSVariableStatusItemLength];
-    [self.theItem setMenu:self.theMenu];
+    [self.theItem setTarget:self];
+    [self.theItem setAction:@selector(togglePopover:)];
+
+    BOOL notificationsAllowed = [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
+    [self.notificationsSwitch setState:(NSCellStateValue)notificationsAllowed];
 }
 
 - (void)setupTimer
@@ -38,30 +54,47 @@
     [[NSRunLoop currentRunLoop] addTimer:self.updateTimer forMode:NSRunLoopCommonModes];
 }
 
+#pragma mark - UI
+
+- (IBAction)togglePopover:(id)sender
+{
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    if ([self.popover isShown]) {
+        [self hidePopover];
+    } else {
+        [self.popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+    }
+}
+
+- (void)hidePopover
+{
+    if ([self.popover isShown]) {
+        [self.popover close];
+    }
+}
+
 - (void)updateStatus
 {
-    APToiletStatus status = [self statusFromResponse:[self toiletResponse]];
-    [self setStatus:status];
+    [self setStatus:[self.backend toiletStatus]];
 }
 
 - (void)setStatus:(APToiletStatus)newStatus
 {
+    [self handleStatusChangeFromStatus:self.currentStatus toStatus:newStatus];
+    
     self.currentStatus = newStatus;
 
     switch (self.currentStatus) {
         case APToiletStatusFree:
-            //[self.theItem setTitle:@"Туалет свободен"];
-            [self.theItem setImage:[NSImage imageNamed:@"sb-green.png"]];
+            [self.theItem setImage:[NSImage imageNamed:kFreeStatusIconName]];
             break;
             
         case APToiletStatusBusy:
-            //[self.theItem setTitle:@"Туалет занят"];
-            [self.theItem setImage:[NSImage imageNamed:@"sb-red.png"]];
+            [self.theItem setImage:[NSImage imageNamed:kBusyStatusIconName]];
             break;
             
         case APToiletStatusUndefined:
-            //[self.theItem setTitle:@"Непонятно"];
-            [self.theItem setImage:[NSImage imageNamed:@"sb-grey.png"]];
+            [self.theItem setImage:[NSImage imageNamed:kUndefinedStatusIconName]];
             break;
             
         default:
@@ -69,41 +102,27 @@
     }
 }
 
-- (NSData *)toiletResponse
+- (void)handleStatusChangeFromStatus:(APToiletStatus)oldStatus toStatus:(APToiletStatus)newStatus
 {
-    //return [kMockedResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSURL *toiletURL = [NSURL URLWithString:kToiletURLString];
-    NSError *requestError = nil;
-    NSData *responseData = [NSData dataWithContentsOfURL:toiletURL options:NSDataReadingUncached error:&requestError];
-
-    if (!responseData) {
-        NSLog(@"Bad request: %@", requestError);
-        
-        return nil;
+    if (oldStatus == APToiletStatusBusy && newStatus == APToiletStatusFree) {
+        [self.notificationController deliverNotificationWithTitle:kFreeNotificationText andText:@""];
     }
     
-    return responseData;
+    if (oldStatus == APToiletStatusFree && newStatus == APToiletStatusBusy) {
+        [self.notificationController deliverNotificationWithTitle:kBusyNotificationText andText:@""];
+    }
+    
+    if (oldStatus != newStatus && newStatus == APToiletStatusUndefined) {
+        [self.notificationController deliverNotificationWithTitle:kUndefinedNotificationText andText:@""];
+    }
 }
 
-- (APToiletStatus)statusFromResponse:(NSData *)responseData
-{
-    if (!responseData) return APToiletStatusUndefined;
+- (IBAction)toggleNotifications:(NSButton *)sender {
+    BOOL notificationsAllowed = [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
+    [[NSUserDefaults standardUserDefaults] setBool:!notificationsAllowed forKey:kNotificationsFlag];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
-    NSError *serializationError = nil;
-    id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&serializationError];
-    
-#ifdef DEBUG
-    NSLog(@"Response: %@", responseObject);
-    NSLog(@"Error: %@", serializationError);
-#endif
-    
-    NSInteger lightStatus = [responseObject[@"light_status"] integerValue];
-    if (lightStatus == 0) {
-        return APToiletStatusFree;
-    } else {
-        return APToiletStatusBusy;
-    }
+    [self.notificationsSwitch setState:(NSCellStateValue)!notificationsAllowed];
 }
 
 @end

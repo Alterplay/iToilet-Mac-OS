@@ -33,6 +33,12 @@
 		0E5B84F818AFB99E00F3CC65 /* sb-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84F118AFB99E00F3CC65 /* sb-red.png */; };
 		0E5B84FD18AFBAF800F3CC65 /* sb-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84FC18AFBAF800F3CC65 /* sb-green.png */; };
 		0E5B84FE18AFBAF800F3CC65 /* sb-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B84FC18AFBAF800F3CC65 /* sb-green.png */; };
+		0E5C251F18B0FBA900D6A32E /* APTBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C251E18B0FBA900D6A32E /* APTBackend.m */; };
+		0E5C252018B0FBA900D6A32E /* APTBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C251E18B0FBA900D6A32E /* APTBackend.m */; };
+		0E5C252318B0FECF00D6A32E /* ZZLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252218B0FECF00D6A32E /* ZZLogger.m */; };
+		0E5C252418B0FECF00D6A32E /* ZZLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252218B0FECF00D6A32E /* ZZLogger.m */; };
+		0E5C252718B1064700D6A32E /* APTNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252618B1064700D6A32E /* APTNotificationController.m */; };
+		0E5C252818B1064700D6A32E /* APTNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252618B1064700D6A32E /* APTNotificationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,13 @@
 		0E5B84F018AFB99E00F3CC65 /* sb-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sb-grey.png"; sourceTree = "<group>"; };
 		0E5B84F118AFB99E00F3CC65 /* sb-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sb-red.png"; sourceTree = "<group>"; };
 		0E5B84FC18AFBAF800F3CC65 /* sb-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sb-green.png"; sourceTree = "<group>"; };
+		0E5C251D18B0FBA900D6A32E /* APTBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTBackend.h; sourceTree = "<group>"; };
+		0E5C251E18B0FBA900D6A32E /* APTBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTBackend.m; sourceTree = "<group>"; };
+		0E5C252118B0FECF00D6A32E /* ZZLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZLogger.h; sourceTree = "<group>"; };
+		0E5C252218B0FECF00D6A32E /* ZZLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZLogger.m; sourceTree = "<group>"; };
+		0E5C252518B1064700D6A32E /* APTNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTNotificationController.h; sourceTree = "<group>"; };
+		0E5C252618B1064700D6A32E /* APTNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTNotificationController.m; sourceTree = "<group>"; };
+		0E5C252918B106FF00D6A32E /* APTDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTDefinitions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,11 +159,15 @@
 		0E5B84B118AFA21500F3CC65 /* iToilet */ = {
 			isa = PBXGroup;
 			children = (
-				0E5B84FB18AFB9B600F3CC65 /* Images */,
+				0E5C252918B106FF00D6A32E /* APTDefinitions.h */,
 				0E5B84BD18AFA21500F3CC65 /* APAppDelegate.h */,
 				0E5B84BE18AFA21500F3CC65 /* APAppDelegate.m */,
-				0E5B84C018AFA21500F3CC65 /* MainMenu.xib */,
-				0E5B84C318AFA21500F3CC65 /* Images.xcassets */,
+				0E5C251B18B0FB7100D6A32E /* Tools */,
+				0E5C251C18B0FB7E00D6A32E /* Networking */,
+				0E5C251A18B0FB6600D6A32E /* Models */,
+				0E5C251918B0FB6100D6A32E /* Views */,
+				0E5C251818B0FB5A00D6A32E /* Controllers */,
+				0E5C251718B0FB1500D6A32E /* Resources */,
 				0E5B84B218AFA21500F3CC65 /* Supporting Files */,
 			);
 			path = iToilet;
@@ -195,6 +212,57 @@
 				0E5B84FC18AFBAF800F3CC65 /* sb-green.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		0E5C251718B0FB1500D6A32E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84FB18AFB9B600F3CC65 /* Images */,
+				0E5B84C318AFA21500F3CC65 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0E5C251818B0FB5A00D6A32E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C252518B1064700D6A32E /* APTNotificationController.h */,
+				0E5C252618B1064700D6A32E /* APTNotificationController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0E5C251918B0FB6100D6A32E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B84C018AFA21500F3CC65 /* MainMenu.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0E5C251A18B0FB6600D6A32E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0E5C251B18B0FB7100D6A32E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C252118B0FECF00D6A32E /* ZZLogger.h */,
+				0E5C252218B0FECF00D6A32E /* ZZLogger.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		0E5C251C18B0FB7E00D6A32E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C251D18B0FBA900D6A32E /* APTBackend.h */,
+				0E5C251E18B0FBA900D6A32E /* APTBackend.m */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +402,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E5B84B818AFA21500F3CC65 /* main.m in Sources */,
+				0E5C252318B0FECF00D6A32E /* ZZLogger.m in Sources */,
+				0E5C252718B1064700D6A32E /* APTNotificationController.m in Sources */,
+				0E5C251F18B0FBA900D6A32E /* APTBackend.m in Sources */,
 				0E5B84BF18AFA21500F3CC65 /* APAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +422,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E5B84E118AFB49800F3CC65 /* main.m in Sources */,
+				0E5C252418B0FECF00D6A32E /* ZZLogger.m in Sources */,
+				0E5C252818B1064700D6A32E /* APTNotificationController.m in Sources */,
+				0E5C252018B0FBA900D6A32E /* APTBackend.m in Sources */,
 				0E5B84E218AFB49800F3CC65 /* APAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +654,7 @@
 				0E5B84DB18AFA21500F3CC65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E5B84DC18AFA21500F3CC65 /* Build configuration list for PBXNativeTarget "iToiletTests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +663,7 @@
 				0E5B84DE18AFA21500F3CC65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0E5B84EA18AFB49800F3CC65 /* Build configuration list for PBXNativeTarget "iToilet (Release)" */ = {
 			isa = XCConfigurationList;
