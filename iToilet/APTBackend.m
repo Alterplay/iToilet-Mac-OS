@@ -14,12 +14,18 @@
 
 @property (assign, nonatomic) BOOL mockRequests;
 
+@property (strong, nonatomic) NSDateFormatter *sessionDurationFormatter;
+@property (assign, nonatomic) NSTimeInterval previousSessionStartDate;
+@property (assign, nonatomic) NSTimeInterval currentSessionStartDate;
+
 /**
  *  Returns NSData generated from backend response
  *
  *  @return UTF-8 encoded backend response as NSData object
  */
 - (NSData *)toiletResponse;
+
+- (id)responseObjectFromData:(NSData *)responseData;
 
 /**
  *  Parses NSData object (by serializing it as JSON string) retrieved from - (NSData *)toiletResponse.
@@ -29,7 +35,9 @@
  *
  *  @return APToiletStatus value
  */
-- (APToiletStatus)statusFromResponse:(NSData *)responseData;
+- (APToiletStatus)statusFromResponseObject:(id)responseObject;
+
+- (void)updateSessionDurationFromResponseObject:(id)responseObject;
 
 @end
 
@@ -38,6 +46,14 @@
 + (instancetype)newBackend
 {
     APTBackend *backend = [[APTBackend alloc] init];
+    
+    backend.previousSessionStartDate = 0;
+    backend.currentSessionStartDate = 0;
+    
+    backend.sessionDurationFormatter = [[NSDateFormatter alloc] init];
+    [backend.sessionDurationFormatter setDateFormat:@"m:ss"];
+    [backend.sessionDurationFormatter setLocale:[NSLocale currentLocale]];
+    [backend.sessionDurationFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     
     return backend;
 }
@@ -56,7 +72,20 @@
 
 - (APToiletStatus)toiletStatus
 {
-    return [self statusFromResponse:[self toiletResponse]];
+    return [self statusFromResponseObject:[self responseObjectFromData:[self toiletResponse]]];
+}
+
+- (NSString *)currentSessionDurationString
+{
+    id responseObject = [self responseObjectFromData:[self toiletResponse]];
+    [self updateSessionDurationFromResponseObject:responseObject];
+    
+    NSTimeInterval sessionDurationInterval = [[NSDate date] timeIntervalSince1970] - self.previousSessionStartDate;
+    NSDate *sessionDurationDate = [NSDate dateWithTimeIntervalSince1970:sessionDurationInterval];
+    
+    ZZLog(LL_UI, @"Session duration: %f sec", sessionDurationInterval);
+    
+    return [self.sessionDurationFormatter stringFromDate:sessionDurationDate];
 }
 
 #pragma mark - Requests
@@ -73,6 +102,7 @@
     
     if (!responseData) {
         ZZLog(LL_NETWORK, @"Bad request: %@", requestError);
+        ZZLog(LL_NETWORK, @"Bad request info: %@", requestError.userInfo);
         
         return nil;
     }
@@ -80,15 +110,22 @@
     return responseData;
 }
 
-- (APToiletStatus)statusFromResponse:(NSData *)responseData
+- (id)responseObjectFromData:(NSData *)responseData
 {
-    if (!responseData) return APToiletStatusUndefined;
+    if (!responseData) return nil;
     
     NSError *serializationError = nil;
     id responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&serializationError];
     
+    return responseObject;
+}
+
+- (APToiletStatus)statusFromResponseObject:(id)responseObject
+{
+    if (!responseObject) return APToiletStatusUndefined;
+    
     ZZLog(LL_NETWORK, @"Response: %@", responseObject);
-    ZZLog(LL_NETWORK, @"Error: %@", serializationError);
+    ZZLog(LL_NETWORK, @"Session duration: %@", [self currentSessionDurationString]);
     
     NSInteger lightStatus = [responseObject[@"light_status"] integerValue];
     if (lightStatus == 0) {
@@ -96,6 +133,16 @@
     } else {
         return APToiletStatusBusy;
     }
+}
+
+- (void)updateSessionDurationFromResponseObject:(id)responseObject
+{
+    NSTimeInterval duration = [responseObject[@"light_change"] integerValue];
+    if (self.currentSessionStartDate != duration) {
+        self.previousSessionStartDate = self.currentSessionStartDate;
+    }
+    
+    self.currentSessionStartDate = duration;
 }
 
 @end

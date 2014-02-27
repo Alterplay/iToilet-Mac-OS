@@ -14,18 +14,20 @@
         <customObject id="-3" userLabel="Application"/>
         <viewController id="U6E-A8-oWe" userLabel="Popover View Controller">
             <connections>
-                <outlet property="view" destination="9LP-ic-HYN" id="zgU-N8-Uow"/>
+                <outlet property="view" destination="9LP-ic-HYN" id="7Q4-TN-KQs"/>
             </connections>
         </viewController>
         <popover id="kgH-iA-Tef">
             <connections>
                 <outlet property="contentViewController" destination="U6E-A8-oWe" id="dsG-ch-iaT"/>
+                <outlet property="delegate" destination="494" id="ZeV-ID-uzH"/>
             </connections>
         </popover>
         <customObject id="494" customClass="APAppDelegate">
             <connections>
-                <outlet property="notificationsSwitch" destination="7rB-BY-GlJ" id="do7-s0-hqD"/>
+                <outlet property="notificationsSwitch" destination="7rB-BY-GlJ" id="mje-mL-QSg"/>
                 <outlet property="popover" destination="kgH-iA-Tef" id="5ph-Cm-FF6"/>
+                <outlet property="sessionDurationLabel" destination="RxS-ge-n2w" id="zOb-BD-5pA"/>
                 <outlet property="theMenu" destination="8eC-nU-BhO" id="aKs-pn-ePG"/>
             </connections>
         </customObject>
@@ -41,11 +43,11 @@
             </items>
         </menu>
         <customView id="9LP-ic-HYN">
-            <rect key="frame" x="0.0" y="0.0" width="124" height="96"/>
+            <rect key="frame" x="0.0" y="0.0" width="124" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XQZ-cd-HBH">
-                    <rect key="frame" x="16" y="48" width="93" height="32"/>
+                    <rect key="frame" x="16" y="63" width="93" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="WvG-w6-vyE"/>
@@ -60,13 +62,13 @@
                     </connections>
                 </button>
                 <button appearanceType="lightContent" translatesAutoresizingMaskIntoConstraints="NO" id="7rB-BY-GlJ">
-                    <rect key="frame" x="10" y="11" width="104" height="26"/>
+                    <rect key="frame" x="10" y="8" width="104" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="2TV-TD-WJQ"/>
                         <constraint firstAttribute="height" constant="22" id="qu7-1w-UMh"/>
                     </constraints>
-                    <buttonCell key="cell" type="check" title="Оповещения" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rPU-iL-sz8">
+                    <buttonCell key="cell" type="check" title="Оповещения" bezelStyle="regularSquare" imagePosition="left" alignment="center" state="on" inset="2" id="rPU-iL-sz8">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -74,12 +76,26 @@
                         <action selector="toggleNotifications:" target="494" id="e0M-B2-ZrY"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RxS-ge-n2w">
+                    <rect key="frame" x="41" y="43" width="42" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="jA0-KF-hCG"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="zzK-TI-zGd">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="XQZ-cd-HBH" firstAttribute="top" secondItem="9LP-ic-HYN" secondAttribute="top" constant="20" id="BiY-Jv-DVd"/>
                 <constraint firstAttribute="centerX" secondItem="XQZ-cd-HBH" secondAttribute="centerX" id="Jcn-u0-aAy"/>
+                <constraint firstAttribute="bottom" secondItem="7rB-BY-GlJ" secondAttribute="bottom" constant="10" id="KrD-gf-L0I"/>
                 <constraint firstAttribute="centerX" secondItem="7rB-BY-GlJ" secondAttribute="centerX" id="NYz-vP-wnN"/>
-                <constraint firstItem="7rB-BY-GlJ" firstAttribute="top" secondItem="XQZ-cd-HBH" secondAttribute="bottom" constant="20" id="aDj-n9-fcy"/>
+                <constraint firstItem="RxS-ge-n2w" firstAttribute="top" secondItem="XQZ-cd-HBH" secondAttribute="bottom" constant="10" id="RYQ-nT-BsP"/>
+                <constraint firstAttribute="centerX" secondItem="RxS-ge-n2w" secondAttribute="centerX" id="YOG-fU-Gwx"/>
             </constraints>
         </customView>
     </objects>

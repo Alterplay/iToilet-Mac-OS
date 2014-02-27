@@ -22,6 +22,11 @@
 {
     APTNotificationController *controller = [[APTNotificationController alloc] init];
     
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kNotificationsFlag]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kNotificationsFlag];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     return controller;
 }
 
@@ -36,12 +41,30 @@
     return self;
 }
 
+#pragma mark - Accessors
+
+- (BOOL)userNotificationsAllowed
+{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kNotificationsFlag]) {
+        return [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
+    }
+    
+    return YES;
+}
+
+- (void)setUserNotificationsAllowed:(BOOL)notificationsAllowed
+{
+    [[NSUserDefaults standardUserDefaults] setBool:notificationsAllowed forKey:kNotificationsFlag];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - Delivering notifications
 
 - (void)deliverNotificationWithTitle:(NSString *)title andText:(NSString *)text
 {
-    BOOL notificationsAllowed = [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
-    if (!notificationsAllowed) return;
+    ZZLog(LL_UI, @"Trying to deliver notification: %@", title);
+
+    if (![self userNotificationsAllowed]) return;
     
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     [notification setTitle:title];

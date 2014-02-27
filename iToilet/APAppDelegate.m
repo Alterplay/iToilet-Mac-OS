@@ -13,7 +13,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 #ifdef DEBUG
-    [[ZZLogger defaultLogger] setCurrentLogLevel:(LL_NETWORK | LL_UI)];
+    [[ZZLogger defaultLogger] setCurrentLogLevel:(LL_UI | LL_NETWORK)];
 #endif
     
     self.backend = [APTBackend newBackend];
@@ -22,7 +22,7 @@
     [self activateStatusMenu];
     [self setCurrentStatus:APToiletStatusUndefined];
     
-    [self setupTimer];
+    [self setupTimers];
 }
 
 - (void)applicationDidResignActive:(NSNotification *)notification
@@ -39,11 +39,13 @@
     [self.theItem setTarget:self];
     [self.theItem setAction:@selector(togglePopover:)];
 
-    BOOL notificationsAllowed = [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
+    BOOL notificationsAllowed = [self.notificationController userNotificationsAllowed];
     [self.notificationsSwitch setState:(NSCellStateValue)notificationsAllowed];
+    
+    ZZLog(LL_UI, @"Notifications: %i", notificationsAllowed);
 }
 
-- (void)setupTimer
+- (void)setupTimers
 {
     NSMethodSignature *updateSignature = [self methodSignatureForSelector:@selector(updateStatus)];
     NSInvocation *updateInvocation = [NSInvocation invocationWithMethodSignature:updateSignature];
@@ -52,9 +54,22 @@
     
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:kRequestTimeout invocation:updateInvocation repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.updateTimer forMode:NSRunLoopCommonModes];
+    
+    NSMethodSignature *updateDurationSignature = [self methodSignatureForSelector:@selector(updateSessionDurationLabel)];
+    NSInvocation *updateDurationInvocation = [NSInvocation invocationWithMethodSignature:updateDurationSignature];
+    [updateDurationInvocation setTarget:self];
+    [updateDurationInvocation setSelector:@selector(updateSessionDurationLabel)];
+    self.durationUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 invocation:updateDurationInvocation repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.durationUpdateTimer forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - UI
+
+- (IBAction)sendTestNotification:(NSButton *)sender
+{
+    [self handleStatusChangeFromStatus:APToiletStatusBusy toStatus:APToiletStatusFree];
+    //[self toggleNotifications:nil];
+}
 
 - (IBAction)togglePopover:(id)sender
 {
@@ -104,12 +119,18 @@
 
 - (void)handleStatusChangeFromStatus:(APToiletStatus)oldStatus toStatus:(APToiletStatus)newStatus
 {
+    if (newStatus == oldStatus) return;
+    
+    ZZLog(LL_UI, @"Handling change from %i to %i", oldStatus, newStatus);
+    
     if (oldStatus == APToiletStatusBusy && newStatus == APToiletStatusFree) {
-        [self.notificationController deliverNotificationWithTitle:kFreeNotificationText andText:@""];
+        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kBusySessionTitle, [self.backend currentSessionDurationString]];
+        [self.notificationController deliverNotificationWithTitle:kFreeNotificationText andText:notificationText];
     }
     
     if (oldStatus == APToiletStatusFree && newStatus == APToiletStatusBusy) {
-        [self.notificationController deliverNotificationWithTitle:kBusyNotificationText andText:@""];
+        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kFreeSessionTitle, [self.backend currentSessionDurationString]];
+        [self.notificationController deliverNotificationWithTitle:kBusyNotificationText andText:notificationText];
     }
     
     if (oldStatus != newStatus && newStatus == APToiletStatusUndefined) {
@@ -118,11 +139,31 @@
 }
 
 - (IBAction)toggleNotifications:(NSButton *)sender {
-    BOOL notificationsAllowed = [[NSUserDefaults standardUserDefaults] boolForKey:kNotificationsFlag];
-    [[NSUserDefaults standardUserDefaults] setBool:!notificationsAllowed forKey:kNotificationsFlag];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.notificationController setUserNotificationsAllowed:![self.notificationController userNotificationsAllowed]];
+    [self.notificationsSwitch setState:(NSCellStateValue)[self.notificationController userNotificationsAllowed]];
     
-    [self.notificationsSwitch setState:(NSCellStateValue)!notificationsAllowed];
+    ZZLog(LL_UI, @"Allowed: %i", [self.notificationController userNotificationsAllowed]);
+}
+
+- (void)updateSessionDurationLabel
+{
+    if ([self.backend toiletStatus] != APToiletStatusUndefined) {
+        [self.sessionDurationLabel setStringValue:[self.backend currentSessionDurationString]];
+    } else {
+        [self.sessionDurationLabel setStringValue:@""];
+    }
+}
+
+#pragma mark - NSPopoverDelegate
+
+- (void)popoverWillShow:(NSNotification *)notification
+{
+    ZZLog(LL_UI, @"popoverWillShow");
+}
+
+- (void)popoverDidClose:(NSNotification *)notification
+{
+    ZZLog(LL_UI, @"popoverDidClose");
 }
 
 @end

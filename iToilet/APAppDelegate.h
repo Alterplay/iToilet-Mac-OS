@@ -12,9 +12,11 @@
 #import "APTBackend.h"
 #import "APTNotificationController.h"
 
-@interface APAppDelegate : NSObject <NSApplicationDelegate> {
+@interface APAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate> {
     
 }
+
+@property (strong, nonatomic) NSTimer *durationUpdateTimer;
 
 /* State */
 @property (assign, nonatomic) APToiletStatus currentStatus;
@@ -29,17 +31,20 @@
 @property (strong, nonatomic) NSStatusItem *theItem;
 @property (weak) IBOutlet NSPopover *popover;
 @property (weak) IBOutlet NSButton *notificationsSwitch;
+@property (weak) IBOutlet NSTextField *sessionDurationLabel;
 
 /* Setup */
 - (void)activateStatusMenu;
-- (void)setupTimer;
+- (void)setupTimers;
 
 /* UI */
+- (IBAction)sendTestNotification:(NSButton *)sender;
 - (IBAction)togglePopover:(id)sender;
 - (void)hidePopover;
 - (void)updateStatus;
 - (void)setStatus:(APToiletStatus)newStatus;
 - (void)handleStatusChangeFromStatus:(APToiletStatus)oldStatus toStatus:(APToiletStatus)newStatus;
+- (void)updateSessionDurationLabel;
 
 /* Actions */
 - (IBAction)toggleNotifications:(NSButton *)sender;
