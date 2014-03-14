@@ -16,6 +16,7 @@
     [[ZZLogger defaultLogger] setCurrentLogLevel:(LL_UI | LL_NETWORK)];
 #endif
     
+    self.settingsManager = [[APTSettingsManager alloc] init];
     self.backend = [APTBackend newBackend];
     self.notificationController = [APTNotificationController newController];
     
@@ -77,6 +78,11 @@
     if ([self.popover isShown]) {
         [self hidePopover];
     } else {
+        if ([self.settingsManager launchAtStartupState]) {
+            [self.autolaunchSwitch setState:NSOnState];
+        } else {
+            [self.autolaunchSwitch setState:NSOffState];
+        }
         [self.popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
     }
 }
@@ -124,12 +130,12 @@
     ZZLog(LL_UI, @"Handling change from %i to %i", oldStatus, newStatus);
     
     if (oldStatus == APToiletStatusBusy && newStatus == APToiletStatusFree) {
-        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kBusySessionTitle, [self.backend currentSessionDurationString]];
+        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kBusySessionTitle, [self.backend previousSessionDurationString]];
         [self.notificationController deliverNotificationWithTitle:kFreeNotificationText andText:notificationText];
     }
     
     if (oldStatus == APToiletStatusFree && newStatus == APToiletStatusBusy) {
-        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kFreeSessionTitle, [self.backend currentSessionDurationString]];
+        NSString *notificationText = [NSString stringWithFormat:@"%@ %@", kFreeSessionTitle, [self.backend previousSessionDurationString]];
         [self.notificationController deliverNotificationWithTitle:kBusyNotificationText andText:notificationText];
     }
     
@@ -138,11 +144,17 @@
     }
 }
 
-- (IBAction)toggleNotifications:(NSButton *)sender {
+- (IBAction)toggleNotifications:(NSButton *)sender
+{
     [self.notificationController setUserNotificationsAllowed:![self.notificationController userNotificationsAllowed]];
     [self.notificationsSwitch setState:(NSCellStateValue)[self.notificationController userNotificationsAllowed]];
     
     ZZLog(LL_UI, @"Allowed: %i", [self.notificationController userNotificationsAllowed]);
+}
+
+- (IBAction)toggleAutolaunch:(NSButton *)sender
+{
+    [self.settingsManager saveLaunchAtStartupState:(sender.state == NSOnState)];
 }
 
 - (void)updateSessionDurationLabel

@@ -11,6 +11,7 @@
 #import "APTDefinitions.h"
 #import "APTBackend.h"
 #import "APTNotificationController.h"
+#import "APTSettingsManager.h"
 
 @interface APAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate> {
     
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSTimer *updateTimer;
 
 /* Data */
+@property (strong, nonatomic) APTSettingsManager *settingsManager;
 @property (strong, nonatomic) APTBackend *backend;
 @property (strong, nonatomic) APTNotificationController *notificationController;
 
@@ -31,6 +33,7 @@
 @property (strong, nonatomic) NSStatusItem *theItem;
 @property (weak) IBOutlet NSPopover *popover;
 @property (weak) IBOutlet NSButton *notificationsSwitch;
+@property (weak) IBOutlet NSButton *autolaunchSwitch;
 @property (weak) IBOutlet NSTextField *sessionDurationLabel;
 
 /* Setup */
@@ -48,5 +51,6 @@
 
 /* Actions */
 - (IBAction)toggleNotifications:(NSButton *)sender;
+- (IBAction)toggleAutolaunch:(NSButton *)sender;
 
 @end

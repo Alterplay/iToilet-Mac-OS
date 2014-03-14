@@ -39,6 +39,9 @@
 
 - (void)updateSessionDurationFromResponseObject:(id)responseObject;
 
+/* Tools */
+- (NSString *)stringDurationForTimeInterval:(NSTimeInterval)interval;
+
 @end
 
 @implementation APTBackend
@@ -75,17 +78,20 @@
     return [self statusFromResponseObject:[self responseObjectFromData:[self toiletResponse]]];
 }
 
+- (NSString *)previousSessionDurationString
+{
+    id responseObject = [self responseObjectFromData:[self toiletResponse]];
+    [self updateSessionDurationFromResponseObject:responseObject];
+    
+    return [self stringDurationForTimeInterval:self.previousSessionStartDate];
+}
+
 - (NSString *)currentSessionDurationString
 {
     id responseObject = [self responseObjectFromData:[self toiletResponse]];
     [self updateSessionDurationFromResponseObject:responseObject];
     
-    NSTimeInterval sessionDurationInterval = [[NSDate date] timeIntervalSince1970] - self.previousSessionStartDate;
-    NSDate *sessionDurationDate = [NSDate dateWithTimeIntervalSince1970:sessionDurationInterval];
-    
-    ZZLog(LL_UI, @"Session duration: %f sec", sessionDurationInterval);
-    
-    return [self.sessionDurationFormatter stringFromDate:sessionDurationDate];
+    return [self stringDurationForTimeInterval:self.currentSessionStartDate];
 }
 
 #pragma mark - Requests
@@ -143,6 +149,18 @@
     }
     
     self.currentSessionStartDate = duration;
+}
+
+#pragma mark - Tools
+
+- (NSString *)stringDurationForTimeInterval:(NSTimeInterval)interval
+{
+    NSTimeInterval sessionDurationInterval = [[NSDate date] timeIntervalSince1970] - interval;
+    NSDate *sessionDurationDate = [NSDate dateWithTimeIntervalSince1970:sessionDurationInterval];
+    
+    ZZLog(LL_UI, @"Session duration: %f sec", sessionDurationInterval);
+    
+    return [self.sessionDurationFormatter stringFromDate:sessionDurationDate];
 }
 
 @end

@@ -18,6 +18,7 @@
 }
 
 @property (assign, nonatomic, readonly) APToiletStatus toiletStatus;
+@property (assign, nonatomic, readonly) NSString *previousSessionDurationString;
 @property (assign, nonatomic, readonly) NSString *currentSessionDurationString;
 
 + (instancetype)newBackend;

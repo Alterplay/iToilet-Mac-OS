@@ -39,6 +39,10 @@
 		0E5C252418B0FECF00D6A32E /* ZZLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252218B0FECF00D6A32E /* ZZLogger.m */; };
 		0E5C252718B1064700D6A32E /* APTNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252618B1064700D6A32E /* APTNotificationController.m */; };
 		0E5C252818B1064700D6A32E /* APTNotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C252618B1064700D6A32E /* APTNotificationController.m */; };
+		0EE2548B18D30ED50007D516 /* APAppLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2548A18D30ED50007D516 /* APAppLauncher.m */; };
+		0EE2548C18D30ED50007D516 /* APAppLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2548A18D30ED50007D516 /* APAppLauncher.m */; };
+		0EE2548F18D310EB0007D516 /* APTSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2548E18D310EB0007D516 /* APTSettingsManager.m */; };
+		0EE2549018D310EB0007D516 /* APTSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2548E18D310EB0007D516 /* APTSettingsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +88,10 @@
 		0E5C252518B1064700D6A32E /* APTNotificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTNotificationController.h; sourceTree = "<group>"; };
 		0E5C252618B1064700D6A32E /* APTNotificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTNotificationController.m; sourceTree = "<group>"; };
 		0E5C252918B106FF00D6A32E /* APTDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTDefinitions.h; sourceTree = "<group>"; };
+		0EE2548918D30ED50007D516 /* APAppLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APAppLauncher.h; sourceTree = "<group>"; };
+		0EE2548A18D30ED50007D516 /* APAppLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APAppLauncher.m; sourceTree = "<group>"; };
+		0EE2548D18D310EB0007D516 /* APTSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APTSettingsManager.h; sourceTree = "<group>"; };
+		0EE2548E18D310EB0007D516 /* APTSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APTSettingsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +260,10 @@
 			children = (
 				0E5C252118B0FECF00D6A32E /* ZZLogger.h */,
 				0E5C252218B0FECF00D6A32E /* ZZLogger.m */,
+				0EE2548918D30ED50007D516 /* APAppLauncher.h */,
+				0EE2548A18D30ED50007D516 /* APAppLauncher.m */,
+				0EE2548D18D310EB0007D516 /* APTSettingsManager.h */,
+				0EE2548E18D310EB0007D516 /* APTSettingsManager.m */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -401,9 +413,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE2548B18D30ED50007D516 /* APAppLauncher.m in Sources */,
 				0E5B84B818AFA21500F3CC65 /* main.m in Sources */,
 				0E5C252318B0FECF00D6A32E /* ZZLogger.m in Sources */,
 				0E5C252718B1064700D6A32E /* APTNotificationController.m in Sources */,
+				0EE2548F18D310EB0007D516 /* APTSettingsManager.m in Sources */,
 				0E5C251F18B0FBA900D6A32E /* APTBackend.m in Sources */,
 				0E5B84BF18AFA21500F3CC65 /* APAppDelegate.m in Sources */,
 			);
@@ -421,9 +435,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE2548C18D30ED50007D516 /* APAppLauncher.m in Sources */,
 				0E5B84E118AFB49800F3CC65 /* main.m in Sources */,
 				0E5C252418B0FECF00D6A32E /* ZZLogger.m in Sources */,
 				0E5C252818B1064700D6A32E /* APTNotificationController.m in Sources */,
+				0EE2549018D310EB0007D516 /* APTSettingsManager.m in Sources */,
 				0E5C252018B0FBA900D6A32E /* APTBackend.m in Sources */,
 				0E5B84E218AFB49800F3CC65 /* APAppDelegate.m in Sources */,
 			);

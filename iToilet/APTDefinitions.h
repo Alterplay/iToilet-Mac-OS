@@ -12,6 +12,8 @@
 #define kUndefinedStatusIconName    @"sb-grey.png"
 
 #define kNotificationsFlag  @"kNotificationsFlag"
+#define kAutolaunchFlag     @"kAutolaunchFlag"
+
 #define kRequestTimeout     3.0
 
 typedef NS_ENUM(NSInteger, APToiletStatus) {

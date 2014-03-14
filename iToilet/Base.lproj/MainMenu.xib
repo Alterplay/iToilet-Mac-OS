@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -25,7 +25,8 @@
         </popover>
         <customObject id="494" customClass="APAppDelegate">
             <connections>
-                <outlet property="notificationsSwitch" destination="7rB-BY-GlJ" id="mje-mL-QSg"/>
+                <outlet property="autolaunchSwitch" destination="7eg-Dt-qqE" id="Iox-nL-tlo"/>
+                <outlet property="notificationsSwitch" destination="l6q-xC-zg9" id="7b0-Xx-4mh"/>
                 <outlet property="popover" destination="kgH-iA-Tef" id="5ph-Cm-FF6"/>
                 <outlet property="sessionDurationLabel" destination="RxS-ge-n2w" id="zOb-BD-5pA"/>
                 <outlet property="theMenu" destination="8eC-nU-BhO" id="aKs-pn-ePG"/>
@@ -43,11 +44,11 @@
             </items>
         </menu>
         <customView id="9LP-ic-HYN">
-            <rect key="frame" x="0.0" y="0.0" width="124" height="111"/>
+            <rect key="frame" x="0.0" y="0.0" width="124" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XQZ-cd-HBH">
-                    <rect key="frame" x="16" y="63" width="93" height="32"/>
+                    <rect key="frame" x="16" y="97" width="93" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="WvG-w6-vyE"/>
@@ -61,23 +62,8 @@
                         <action selector="terminate:" target="-3" id="YUQ-4E-z6y"/>
                     </connections>
                 </button>
-                <button appearanceType="lightContent" translatesAutoresizingMaskIntoConstraints="NO" id="7rB-BY-GlJ">
-                    <rect key="frame" x="10" y="8" width="104" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="2TV-TD-WJQ"/>
-                        <constraint firstAttribute="height" constant="22" id="qu7-1w-UMh"/>
-                    </constraints>
-                    <buttonCell key="cell" type="check" title="Оповещения" bezelStyle="regularSquare" imagePosition="left" alignment="center" state="on" inset="2" id="rPU-iL-sz8">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleNotifications:" target="494" id="e0M-B2-ZrY"/>
-                    </connections>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RxS-ge-n2w">
-                    <rect key="frame" x="41" y="43" width="42" height="17"/>
+                    <rect key="frame" x="41" y="77" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="jA0-KF-hCG"/>
@@ -88,12 +74,32 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eg-Dt-qqE">
+                    <rect key="frame" x="10" y="18" width="104" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Автозапуск" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Oha-u3-7RM">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleAutolaunch:" target="494" id="b6F-ck-SSR"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6q-xC-zg9">
+                    <rect key="frame" x="10" y="41" width="104" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Оповещения" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iSH-LV-hGI">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleNotifications:" target="494" id="wfz-vh-qRX"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="XQZ-cd-HBH" firstAttribute="top" secondItem="9LP-ic-HYN" secondAttribute="top" constant="20" id="BiY-Jv-DVd"/>
                 <constraint firstAttribute="centerX" secondItem="XQZ-cd-HBH" secondAttribute="centerX" id="Jcn-u0-aAy"/>
-                <constraint firstAttribute="bottom" secondItem="7rB-BY-GlJ" secondAttribute="bottom" constant="10" id="KrD-gf-L0I"/>
-                <constraint firstAttribute="centerX" secondItem="7rB-BY-GlJ" secondAttribute="centerX" id="NYz-vP-wnN"/>
                 <constraint firstItem="RxS-ge-n2w" firstAttribute="top" secondItem="XQZ-cd-HBH" secondAttribute="bottom" constant="10" id="RYQ-nT-BsP"/>
                 <constraint firstAttribute="centerX" secondItem="RxS-ge-n2w" secondAttribute="centerX" id="YOG-fU-Gwx"/>
             </constraints>
