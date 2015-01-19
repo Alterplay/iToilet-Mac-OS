@@ -96,6 +96,9 @@
 
 #pragma mark - Requests
 
+/**
+ *  @TODO use dataTaskWithURL:completionHandler: instead of dataWithContentsOfURL
+ */
 - (NSData *)toiletResponse
 {
     if (self.mockRequests) {

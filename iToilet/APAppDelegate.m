@@ -75,6 +75,7 @@
 - (IBAction)togglePopover:(id)sender
 {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    
     if ([self.popover isShown]) {
         [self hidePopover];
     } else {
